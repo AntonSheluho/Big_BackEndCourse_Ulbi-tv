@@ -1,0 +1,48 @@
+db.users.insertOne({
+    name: "Anton",
+    age: 29
+})
+
+-------------------------------------------------
+
+db.users.insertMany([
+    {name: "Gena", age: 25},
+    {name: "Vavo", age: 75},
+    {name: "Jora", age: 65},
+    {name: "Dima", age: 55},
+    {name: "John", age: 45},
+    {name: "Koly", age: 35}
+])
+
+---------------------------------------------------
+
+db.users.updateOne({age: 75}, {$set: {   
+    name: "Vova", age: 100
+}})
+
+------------------------------------------------------
+
+db.users.updateOne({age: 75}, {$rename: {   
+    name: "fullname"
+}})
+///////   теперь пользователи с age 75 в мета поля name будут иметь fullname 
+
+------------------------------------------------------------------
+
+db.users.deleteOne({age: 25})  /// удаляет пользователя по критериям
+
+-----------------------------------------------------------------------
+
+// Мульти Задачка
+db.users.bulkWrite([
+    {
+        insertOne: {
+            document: {name: "Sonay", email: "sonay@gmail.com"}
+        }
+    },
+    {
+        deleteOne: {
+            filter: {name: "Vova"}
+        }
+    }
+])
