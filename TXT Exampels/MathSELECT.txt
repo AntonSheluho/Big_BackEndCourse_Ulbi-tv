@@ -1,0 +1,55 @@
+mysql> SELECT * FROM teacher;
++----+-------------+------+
+| id | surname     | age  |
++----+-------------+------+
+|  1 | Johnson     |   26 |
+|  2 | Pedegru     |   36 |
+|  3 | Potter      |   31 |
+|  4 | Hugred      |   41 |
+|  5 | Volondemort |   46 |
+|  6 | Snake       |   51 |
+|  7 | Uizly       | NULL |
++----+-------------+------+
+
+
+
+mysql> SELECT AVG(age) FROM teacher;    // среднее значение
++----------+
+| AVG(age) |
++----------+
+|  38.5000 |
++----------+
+
+mysql> SELECT MAX(age), MIN(age) FROM teacher;
++----------+----------+
+| MAX(age) | MIN(age) |
++----------+----------+
+|       51 |       26 |
++----------+----------+
+
+mysql> SELECT SUM(age) FROM teacher;
++----------+
+| SUM(age) |
++----------+
+|      231 |
++----------+
+
+mysql> SELECT age, COUNT(age) FROM teacher;
++------+------------+
+| age  | COUNT(age) |
++------+------------+
+|   26 |          6 |
++------+------------+
+
+mysql> SELECT age, COUNT(age) FROM teacher GROUP BY age;
++------+------------+
+| age  | COUNT(age) |
++------+------------+
+|   26 |          1 |
+|   36 |          1 |
+|   31 |          1 |
+|   41 |          1 |
+|   46 |          1 |
+|   51 |          1 |
+| NULL |          0 |
++------+------------+

@@ -1,0 +1,81 @@
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+
+mysql> CREATE DATABASE sql_course;  // Create database {name}
+
+mysql> DROP DATABASE sql_course;    // Delete database {name}
+
+mysql> USE sql_course;  // Use {name} => using database
+
+mysql> CREATE TABLE teacher(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,   // INT: number, PRIMARY KEY: первичный ключ
+    -> surname VARCHAR(255) NOT NULL,   // VARCHAR: string, NOT NULL: required field
+    -> );   
+
+mysql> show tables;
++----------------------+
+| Tables_in_sql_course |
++----------------------+
+| teacher              |
++----------------------+
+
+mysql> show columns FROM teacher;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int          | NO   | PRI | NULL    | auto_increment |
+| surname | varchar(255) | NO   |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+
+mysql>  CREATE TABLE lesson(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> name VARCHAR(255) NOT NULL,
+    -> teacher_id INT NOT NULL,
+    -> FOREIGN KEY (teacher_id) references teacher(id)
+    -> );
+
+
+mysql> INSERT INTO teacher (surname) values ("Johnson");
+mysql> INSERT INTO teacher (surname) values ("Pedegru");
+mysql> INSERT INTO teacher (surname) values ("Potter");
+mysql> INSERT INTO teacher (surname) values ("Hugred");
+mysql> INSERT INTO teacher (surname) values ("Volondemort");
+mysql> INSERT INTO teacher (surname) values ("Snake");
+
+
+mysql> ALTER TABLE teacher ADD age INT;     // add column "age" INT: number
+
+mysql> UPDATE teacher SET age=20 WHERE id=1;    // update column age row with id === 1
+
+mysql> UPDATE teacher SET age=20 WHERE id=1;    // update all row in column age
+
+mysql> DELETE FROM teacher;     // delete all notes
+mysql> DELETE FROM teacher WHERE id=1;     // delete only note with id == 1
+
+mysql> INSERT INTO lesson (name, teacher_id) VALUE ("Матеиатика",1), ("Информатика",1), ("Русский",2), ("Физика", 3);
+
+mysql> INSERT INTO lesson (name, teacher_id) VALUE ("Math", 4);
+mysql> INSERT INTO lesson (name, teacher_id) VALUE ("Sciens", 5);
+mysql> INSERT INTO lesson (name, teacher_id) VALUE ("Picture", 6);
+
+mysql> SELECT * FROM lesson;
++----+-------------+------------+
+| id | name        | teacher_id |
++----+-------------+------------+
+|  1 | Матеиатика  |          1 |
+|  2 | Информатика |          1 |
+|  3 | Русский     |          2 |
+|  4 | Физика      |          3 |
+|  5 | Math        |          4 |
+|  6 | Sciens      |          5 |
+|  7 | Picture     |          6 |
++----+-------------+------------+

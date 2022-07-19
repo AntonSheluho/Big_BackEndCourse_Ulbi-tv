@@ -1,0 +1,147 @@
+mysql> show tables;
++----------------------+
+| Tables_in_sql_course |
++----------------------+
+| lesson               |
+| teacher              |
++----------------------+
+
+mysql> show columns FROM teacher;
++---------+--------------+------+-----+---------+----------------+
+| Field   | Type         | Null | Key | Default | Extra          |
++---------+--------------+------+-----+---------+----------------+
+| id      | int          | NO   | PRI | NULL    | auto_increment |
+| surname | varchar(255) | NO   |     | NULL    |                |
++---------+--------------+------+-----+---------+----------------+
+
+mysql> show columns FROM lesson;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int          | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(255) | NO   |     | NULL    |                |
+| teacher_id | int          | NO   | MUL | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+
+mysql> SELECT * FROM teacher;
++----+-------------+
+| id | surname     |
++----+-------------+
+|  1 | Johnson     |
+|  2 | Pedegru     |
+|  3 | Potter      |
+|  4 | Hugred      |
+|  5 | Volondemort |
+|  6 | Snake       |
++----+-------------+
+
+mysql> SELECT * FROM teacher WHERE id = 3;
++----+---------+
+| id | surname |
++----+---------+
+|  3 | Potter  |
++----+---------+
+
+mysql> SELECT * FROM teacher ORDER BY surname;  // ORDER BY => сортировать по
++----+-------------+
+| id | surname     |
++----+-------------+
+|  4 | Hugred      |
+|  1 | Johnson     |
+|  2 | Pedegru     |
+|  3 | Potter      |
+|  6 | Snake       |
+|  5 | Volondemort |
++----+-------------+
+
+mysql> SELECT * FROM teacher ORDER BY surname DESC; // DESC => reverse
++----+-------------+
+| id | surname     |
++----+-------------+
+|  5 | Volondemort |
+|  6 | Snake       |
+|  3 | Potter      |
+|  2 | Pedegru     |
+|  1 | Johnson     |
+|  4 | Hugred      |
++----+-------------+
+
+mysql> SELECT * FROM teacher ORDER BY id;
++----+-------------+
+| id | surname     |
++----+-------------+
+|  1 | Johnson     |
+|  2 | Pedegru     |
+|  3 | Potter      |
+|  4 | Hugred      |
+|  5 | Volondemort |
+|  6 | Snake       |
++----+-------------+
+
+mysql> SELECT * FROM teacher WHERE surname LIKE "P%";
++----+---------+------+
+| id | surname | age  |
++----+---------+------+
+|  2 | Pedegru |   36 |
+|  3 | Potter  |   31 |
++----+---------+------+
+
+mysql> SELECT * FROM teacher WHERE surname LIKE "P%u";
++----+---------+------+
+| id | surname | age  |
++----+---------+------+
+|  2 | Pedegru |   36 |
++----+---------+------+
+
+mysql> SELECT * FROM teacher WHERE surname LIKE "%u";
++----+---------+------+
+| id | surname | age  |
++----+---------+------+
+|  2 | Pedegru |   36 |
++----+---------+------+
+
+mysql> SELECT * FROM teacher WHERE id=1 AND age=26;     // only work with both conditions 
++----+---------+------+
+| id | surname | age  |
++----+---------+------+
+|  1 | Johnson |   26 |
++----+---------+------+
+
+mysql> SELECT * FROM teacher WHERE id>4 AND age>26;
++----+-------------+------+
+| id | surname     | age  |
++----+-------------+------+
+|  5 | Volondemort |   46 |
+|  6 | Snake       |   51 |
++----+-------------+------+
+
+mysql> SELECT * FROM teacher WHERE id>4 OR age>31;  // OR
++----+-------------+------+
+| id | surname     | age  |
++----+-------------+------+
+|  2 | Pedegru     |   36 |
+|  4 | Hugred      |   41 |
+|  5 | Volondemort |   46 |
+|  6 | Snake       |   51 |
++----+-------------+------+
+
+mysql> SELECT * FROM teacher WHERE NOT id=3 AND NOT id=5;
++----+---------+------+
+| id | surname | age  |
++----+---------+------+
+|  1 | Johnson |   26 |
+|  2 | Pedegru |   36 |
+|  4 | Hugred  |   41 |
+|  6 | Snake   |   51 |
++----+---------+------+
+
+mysql> SELECT * FROM teacher WHERE age BETWEEN 27 AND 46;
++----+-------------+------+
+| id | surname     | age  |
++----+-------------+------+
+|  2 | Pedegru     |   36 |
+|  3 | Potter      |   31 |
+|  4 | Hugred      |   41 |
+|  5 | Volondemort |   46 |
++----+-------------+------+
+

@@ -1,0 +1,69 @@
+mysql> SELECT * FROM teacher;
++----+-------------+------+
+| id | surname     | age  |
++----+-------------+------+
+|  1 | Johnson     |   26 |
+|  2 | Pedegru     |   36 |
+|  3 | Potter      |   31 |
+|  4 | Hugred      |   41 |
+|  5 | Volondemort |   46 |
+|  6 | Snake       |   51 |
+|  7 | Uizly       | NULL |
++----+-------------+------+
+mysql> SELECT * FROM lesson;
++----+-------------+------------+
+| id | name        | teacher_id |
++----+-------------+------------+
+|  1 | Матеиатика  |          1 |
+|  2 | Информатика |          1 |
+|  3 | Русский     |          2 |
+|  4 | Физика      |          3 |
+|  5 | Math        |          4 |
+|  6 | Sciens      |          5 |
+|  7 | Picture     |          6 |
+|  9 | History     |          6 |
++----+-------------+------------+
+
+
+mysql> SELECT teacher.surname, lesson.name FROM teacher INNER JOIN lesson ON teacher.id = lesson.teacher_id;
++-------------+-------------+
+| surname     | name        |
++-------------+-------------+
+| Johnson     | Матеиатика  |
+| Johnson     | Информатика |
+| Pedegru     | Русский     |
+| Potter      | Физика      |
+| Hugred      | Math        |
+| Volondemort | Sciens      |
+| Snake       | Picture     |
+| Snake       | History     |
++-------------+-------------+
+
+mysql> SELECT teacher.surname, lesson.name FROM teacher LEFT OUTER JOIN lesson ON teacher.id = lesson.teacher_id;
++-------------+-------------+
+| surname     | name        |
++-------------+-------------+
+| Johnson     | Матеиатика  |
+| Johnson     | Информатика |
+| Pedegru     | Русский     |
+| Potter      | Физика      |
+| Hugred      | Math        |
+| Volondemort | Sciens      |
+| Snake       | Picture     |
+| Snake       | History     |
+| Uizly       | NULL        |
++-------------+-------------+
+
+mysql> SELECT teacher.surname, lesson.name FROM teacher RIGHT OUTER JOIN lesson ON teacher.id = lesson.teacher_id;
++-------------+-------------+
+| surname     | name        |
++-------------+-------------+
+| Johnson     | Матеиатика  |
+| Johnson     | Информатика |
+| Pedegru     | Русский     |
+| Potter      | Физика      |
+| Hugred      | Math        |
+| Volondemort | Sciens      |
+| Snake       | Picture     |
+| Snake       | History     |
++-------------+-------------+
