@@ -1,0 +1,25 @@
+{
+  "name": "big_backendcourse_ulbi-tv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonSheluho/Big_BackEndCourse_Ulbi-tv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonSheluho/Big_BackEndCourse_Ulbi-tv/issues"
+  },
+  "homepage": "https://github.com/AntonSheluho/Big_BackEndCourse_Ulbi-tv#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.4.5",
+    "nodemon": "^2.0.19"
+  }
+}
