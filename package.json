@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/AntonSheluho/Big_BackEndCourse_Ulbi-tv#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.5",
     "nodemon": "^2.0.19"
   }
