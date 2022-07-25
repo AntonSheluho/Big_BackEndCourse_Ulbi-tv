@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors')
 const cookieParse = require('cookie-parser');
 const mongoose = require('mongoose');
-const router = require('./routers/index.js')
+const router = require('./routers/index.js');
+const errorMiddleware = require('./middlewares/error-middleware');
 
 const PORT = process.env.PORT || 5000
 const URL = process.env.DB_URL
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cookieParse());
 app.use(cors());
 app.use('/api', router)
+app.use(errorMiddleware);  // миделвеер ошибки всегда в конце
 
 const start = async () => {
     try {
